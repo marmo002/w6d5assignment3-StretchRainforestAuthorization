@@ -1,7 +1,7 @@
 
 <h1>List of Products</h1>
 
-<a href="#">New Product</a>
+<%= link_to 'New Product', new_product_path %>
 
 <% @products.each do |product| %>
   <section>
