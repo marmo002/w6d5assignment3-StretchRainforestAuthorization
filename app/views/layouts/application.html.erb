@@ -9,6 +9,13 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <ul>
+          <li><%= link_to "Home", products_path %> | <%= link_to "New Product", new_product_path %> </li>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
