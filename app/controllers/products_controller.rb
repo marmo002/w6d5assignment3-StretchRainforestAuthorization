@@ -24,11 +24,18 @@ class ProductsController < ApplicationController
   end
 
   def edit
-
+    @product = Product.find(params[:id])
   end
 
   def update
-
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      flash[:notice] = "#{@product.name} has been updated"
+      redirect_to product_path
+    else
+      flash[:alert] = "Please fix errors"
+      render :edit
+    end
   end
 
   def delete
