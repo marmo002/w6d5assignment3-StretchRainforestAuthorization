@@ -6,3 +6,15 @@
 
 <p>Description: <%= @product.description %></p>
 <p>Price: <%= @product.price_in_dollars %></p>
+
+
+<h2>Reviews</h2>
+
+<ul>
+  <% @product.reviews.each do |review| -%>
+    <li>
+      <%= review.comment %>
+      <%= review.created_at %>
+    </li>
+  <% end %>
+</ul>
