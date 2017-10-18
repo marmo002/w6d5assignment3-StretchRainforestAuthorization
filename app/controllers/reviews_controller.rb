@@ -14,11 +14,18 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-
+    @review = @product.reviews.find(params[:id])
   end
 
   def update
-
+    @review = @product.reviews.find(params[:id])
+    if @review.update(review_params)
+    flash[:notice] = "Review has been updated"
+    redirect_to product_path(@product)
+    else
+      flash[:alert] = "Please fix errors"
+      render :edit
+    end
   end
 
   def destroy
