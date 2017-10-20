@@ -10,12 +10,31 @@
 
   <body>
     <header>
+      <% if flash %>
+      <p><%= flash[:notice] %></p>
+      <p><%= flash[:alert] %></p>
+      <% end %>
+
+      <% if current_user %>
+        <p>Currently logged in as "<%= current_user.email %>" - <%= link_to "Log Out", sessions_path, method: :delete %></p>
+      <% else %>
+        <p><%= link_to "Log In", new_sessions_path %> or <%= link_to "Signe Up", new_users_path %></p>
+      <% end %>
+
+
       <nav>
         <ul>
-          <li><%= link_to "Home", products_path %> | <%= link_to "New Product", new_product_path %> </li>
+          <li><%= link_to "Home", products_path %></li>
+          <% if current_user %>
+          <li>  <%= link_to "New Product", new_product_path %> </li>
+          <% else %>
+          <li>To add products: <%= link_to "Log In", new_sessions_path %> or <%= link_to "Signe Up", new_users_path %></li>
+          <% end %>
         </ul>
       </nav>
     </header>
+
+
     <%= yield %>
   </body>
 </html>
