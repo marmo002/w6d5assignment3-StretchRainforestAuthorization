@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
   has_many :reviews
-  
+
+  belongs_to :user
+
   validates :name, :description, :price, presence: true
 
   def price_in_dollars
